@@ -1,0 +1,22 @@
+$max-width: 1200px;
+$gutter: 20px;
+
+// Google fonts
+@import url('https://fonts.googleapis.com/css?family=Lora|Roboto+Mono&display=swap');
+
+// Font Variables
+$font-heading: 'Roboto Mono', monospace;
+$font-main: 'Lora', serif;
+
+//Colors
+$color-1: #000;
+$color-2: #999;
+$color-3: #aaa;
+$color-4: #ccc;
+$color-5: #2d2;
+$color-6: #1a1;
+$color-7: #fcffd2;
+$color-8: #cc9694;
+
+// Transition
+$transition: 200ms ease-in-out;
