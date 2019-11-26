@@ -1,7 +1,7 @@
 {
   "name": "h2",
   "version": "1.0.0",
-  "description": "verkefni 10",
+  "description": "Hopaverkefni_2",
   "main": "index.js",
   "scripts": {
     "eslint": "eslint ./src/**/*.js",
@@ -10,7 +10,7 @@
     "browser-sync": "browser-sync start --server --files index.html favourites.html ./dist/styles.css ./dist/bundle.js",
     "stylelint": "stylelint ./src/styles/**/*.scss --syntax scss",
     "sass": "node-sass --source-map-embed ./src/styles/styles.scss ./dist/styles.css",
-    "sass-watch": "node-sass --source-map-embed --watch --recursive src/styles/styles.scss ./dist/styles.css",
+    "sass-watch": "node-sass --source-map-embed --watch --recursive ./src/styles/*.scss  ./dist/styles.css",
     "test": "concurrently npm:eslint npm:stylelint",
     "dev": "concurrently  npm:sass npm:sass-watch npm:rollup-watch npm:browser-sync"
   },
@@ -18,11 +18,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@primer/css": "^13.2.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
+    "@primer/css": "^13.2.0",
     "browser-sync": "^2.26.7",
     "concurrently": "^5.0.0",
     "eslint": "^6.6.0",
@@ -32,6 +30,8 @@
     "regenerator-runtime": "^0.13.3",
     "rollup": "^1.26.4",
     "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "stylelint": "^11.1.1",
     "stylelint-config-primer": "^9.0.0"
   },
