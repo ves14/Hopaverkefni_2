@@ -1,0 +1,30 @@
+@import "config";
+
+.buttons__button {
+  display: block;
+
+  width: 100%;
+  max-width: 200px;
+  padding: 10px 5px;
+  margin: 20px;
+  font-family: $font-heading;
+  font-size: 1rem;
+  color: $color-1;
+  text-align: center;
+  text-decoration: none;
+  background-color: $color-4;
+  border-color: $color-2;
+  border-style: outset;
+  border-radius: 7px;
+
+  
+
+  &:hover {
+    background-color: $color-3;
+    $transition: 200ms ease-in-out;
+  }
+
+  &:active {
+    background-color: $color-5;
+  }
+}

@@ -1,0 +1,87 @@
+@import "config";
+
+.protection {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+
+.header__forsida {
+    min-height: 300px;
+    max-width: $max-width;
+    margin-bottom: $gutter * 2;
+    margin-right: auto;
+    margin-left: auto;
+    background: url(/img/header.jpg) 50% 50%;
+    background-size: cover;
+  
+    &__content {
+      display: flex;
+      max-width: $max-width;
+      margin: 0 auto;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    &__title {
+      
+      margin-top: $gutter * 4;
+      font-family: $font-heading;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      z-index: 1;
+    }
+
+    &__title2 {
+        margin-bottom: $gutter;
+        font-family: $font-heading;
+        font-size: 2.5rem;
+        font-weight: 600;
+        text-align: center;
+        z-index: 1;
+    }
+  }
+
+  .header__lecture-page {
+    min-height: 300px;
+    max-width: $max-width;
+    margin-bottom: $gutter * 2;
+    margin-right: auto;
+    margin-left: auto;
+    background: url(img/code.jpg) 50% 50%;
+    background-size: cover;
+  
+    &__content {
+      display: flex;
+      max-width: $max-width;
+      margin: 0 auto;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    &__title {
+      
+      margin-top: $gutter * 4;
+      font-family: $font-heading;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      z-index: 1;
+    }
+
+    &__title2 {
+        margin-bottom: $gutter;
+        font-family: $font-heading;
+        font-size: 2.5rem;
+        font-weight: 600;
+        text-align: center;
+        z-index: 1;
+    }
+  }
