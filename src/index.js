@@ -5,9 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const isLecturePage = page.classList.contains('lecture-page');
 
   if (isLecturePage) {
+    const lecture = new List();
+    lecture.load();
+
+
 
   } else {
-    const list = new List();
-    list.load();
+    const index = new List();
+    index.load();
   }
 });
