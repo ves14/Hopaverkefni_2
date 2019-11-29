@@ -18,7 +18,28 @@ Hægt er að raða upp fyrirlestrunum eftir því hvort fyrirlestrarnir fjalla u
 Fyrirlestrarinir innihalda miðmunandi efni, myndir og vídjó og neðst á síðunni er takki til að merkja fyrirlestur kláraðann og hlekkur til að fara til baka.
 
 ## Uppsetning verkefnis
-Verkefninu er allt í möppunni Hopaverkefni_2 og er síðan skipt í nokkrar möppur innan þess. Í rótinni er að finna indexið, READ-ME skjal, rollup.config.js, fyrirlestur.html, lectures.json og package.json. Möppur í rótinni eru src sem skiptist í tvær möppur, í rót src möpunnar er index.js skráin og síðan eru lib, sem heldur utan um javascript skjölin, og styles, sem heldur utan um scss skjölin en þau skjöl tengjast inn í styles.scss sem heldur utan um CSS-ið. Í rót verkefnisins er einnig að finna img möppu með öllum myndum sem notaðar eru á vefnum, utlit möppu með dæmi hvernig verkefnið á að líta út, node_modules möppu og dist möppu með bundle.js og styles.css skjalinu.
+Verkefninu er allt í möppunni Hopaverkefni_2 og er síðan skipt í nokkrar möppur innan þess. Í rótinni er að finna indexið, READ-ME skjal, rollup.config.js, fyrirlestur.html, lectures.json og package.json. Möppur í rótinni eru src sem skiptist í tvær möppur, í rót src möpunnar er index.js skráin og síðan eru lib, sem heldur utan um javascript skjölin, og styles, sem heldur utan um scss skjölin en þau skjöl tengjast inn í styles.scss sem heldur utan um CSS-ið. Í rót verkefnisins er einnig að finna img möppu með öllum myndum sem notaðar eru á vefnum, útlit möppu með dæmi hvernig verkefnið á að líta út, node_modules möppu og dist möppu með bundle.js og styles.css skjalinu.
+
+Forsíða: `index.html`
+Fyrirlestrarsíða: `fyrirlestur.html`
+Scss skrár eru í `./styles` folder sem er inní `./src` folder.
+Þær eru:
+`config.scss`: Grunnupplýsingar (litir, stærðir, fontar, transition upplýsingar o.fl.)
+`styles.scss`: Allar útlitsupplýsingar sem þýðast svo yfir í styles.css skjalið.
+`button.scss`: Virkni og útlit á tökkum.
+`header.scss`: Útlit á header á forsíðu.
+`header-fyrirlestur.scss`: Útlit á header á fyrirlestrarsíðu.
+`footer.scss`: Útlit á footer á fyrirlestrarsíðu.`./dist` folder er ignoraður af git. Hann inniheldur:
+`styles.css`: Útlit á forsíðu og fyrirlestrarsíðu.Í rót verkefnisins eru:
+`grid.css`: Útlit á gridi.
+`lectures.json`: Fyrirlestrargögn.
+`package.json`
+`package-lock.json`
+`rollup.config.js`
+`eslintrc.js`
+`gitignore`
+`gitattributes`
+`stylelintrc`
 
 
 ## Tæki og tól
@@ -45,27 +66,7 @@ Eftirfarandi er sett upp í verkefni:* `.stylelintrc` með upplýsingum um hvern
 * `babel` til að _transpila_ kóða
 
 
-## Uppsetning verkefnis
-Forsíða: `index.html`
-Fyrirlestrarsíða: `fyrirlestur.html`
-Scss skrár eru í `./styles` folder sem er inní `./src` folder.
-Þær eru:
-`config.scss`: Grunnupplýsingar (litir, stærðir, fontar, transition upplýsingar o.fl.)
-`styles.scss`: Allar útlitsupplýsingar sem þýðast svo yfir í styles.css skjalið.
-`button.scss`: Virkni og útlit á tökkum.
-`header.scss`: Útlit á header á forsíðu.
-`header-fyrirlestur.scss`: Útlit á header á fyrirlestrarsíðu.
-`footer.scss`: Útlit á footer á fyrirlestrarsíðu.`./dist` folder er ignoraður af git. Hann inniheldur:
-`styles.css`: Útlit á forsíðu og fyrirlestrarsíðu.Í rót verkefnisins eru:
-`grid.css`: Útlit á gridi.
-`lectures.json`: Fyrirlestrargögn.
-`package.json`
-`package-lock.json`
-`rollup.config.js`
-`eslintrc.js`
-`gitignore`
-`gitattributes`
-`stylelintrc`
+
 
 ## Keyrsla:
 Verkefnið er hýst á https://notendur.hi.is/~ves14/Vefforritun/Verkefni/Hopaverkefni_2/
