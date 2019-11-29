@@ -1,6 +1,7 @@
-import { isStored } from './storage';
+import { isStored } from './lecture';
 
 const URL = './lectures.json';
+
 
 export function empty(element) {
   while (element.firstChild) {
@@ -8,12 +9,11 @@ export function empty(element) {
   }
 }
 
-
 export function el(name, ...children) {
   const element = document.createElement(name);
 
   if (Array.isArray(children)) {
-    for (let child of children) { /* eslint-disable-line */
+    for (let child of children) {
       if (typeof child === 'string') {
         element.appendChild(document.createTextNode(child));
       } else if (child) {
@@ -24,33 +24,32 @@ export function el(name, ...children) {
   return element;
 }
 
-
 export function getData() {
   const response = fetch(URL);
+  console.log(response);
   const json = response.then((resp) => {
     if (!resp.ok) {
-      throw Error('Villa við að sækja mynd');
+      throw Error('Villa við að sækja upplýsingar');
     }
     return resp.json();
   })
     .catch((e) => {
       console.error(e);
-      throw Error('villa við að sækja mynd');
+      throw Error('villa við að sækja upplýsingar');
     });
   return json;
 }
 
 
 function displayLecture(element, data) {
+  // Virkni sem býr til fyrirlestrana á forsíðunni
   let thumbnail;
   if (data.thumbnail == null) {
     thumbnail = 'engin mynd';
   } else {
     thumbnail = data.thumbnail;
   }
-  // eslint-disable-next-line prefer-destructuring
   const category = data.category;
-  // eslint-disable-next-line prefer-destructuring
   const title = data.title;
 
   const lecture = document.createElement('div');
@@ -67,7 +66,7 @@ function displayLecture(element, data) {
   const lectureCategoryH3 = document.createElement('h3');
   lectureCategoryH3.className = 'lectures__h3';
 
-  // Virkni ef fyrirlesturinn er kláraður
+  // Virkni sem sýnir hvort fyrirlesturinn er kláraður eða ekki
   if (isStored(data.slug)) {
     lectureTitle.classList.add('lectures__title-active');
     const checked = document.createElement('h2');
@@ -81,7 +80,7 @@ function displayLecture(element, data) {
 
   lectureCategoryH3.appendChild(document.createTextNode(category));
 
-  //  Virkni sem setur saman titil og checkmark
+  //  Virkni sem setur saman fyrir titil og checkmark
   if (thumbnail === 'engin mynd') {
     const lectureImageDiv = document.createElement('div');
     lectureImageDiv.className = 'lectures__noImg';
@@ -93,7 +92,7 @@ function displayLecture(element, data) {
     lectureImage.appendChild(lectureImageImg);
   }
 
-  // Setjum allt sem við smíðuðum saman.
+  // Setjum allt saman sem við smíðuðum saman og append við síðu.
   lectureCategory.appendChild(lectureCategoryH3);
   lectureTitle.appendChild(lectureTitleH2);
   lecture.appendChild(lectureTitle);
@@ -102,25 +101,25 @@ function displayLecture(element, data) {
   element.appendChild(lecture);
 }
 
-
+//Eru takkarnir true eða false
 function allEqual(bool) {
   if (bool[0] === bool[1] && bool[1] === bool[2]) {
     return true;
   }
   return false;
 }
+
 export function displayLectures(element, lectKeys, lectures, buttonBool) {
   const allLectures = lectures;
-  // eslint-disable-next-line no-restricted-syntax
-  for (const x in allLectures) {
+  for (const variable in allLectures) {
     if (allEqual(buttonBool)) {
-      displayLecture(element, allLectures[x]);
-    } else if (buttonBool[0] && allLectures[x].category === 'html') {
-      displayLecture(element, allLectures[x]);
-    } else if (buttonBool[1] && allLectures[x].category === 'css') {
-      displayLecture(element, allLectures[x]);
-    } else if (buttonBool[2] && allLectures[x].category === 'javascript') {
-      displayLecture(element, allLectures[x]);
+      displayLecture(element, allLectures[variable]);
+    } else if (buttonBool[0] && allLectures[variable].category === 'html') {
+      displayLecture(element, allLectures[variable]);
+    } else if (buttonBool[1] && allLectures[variable].category === 'css') {
+      displayLecture(element, allLectures[variable]);
+    } else if (buttonBool[2] && allLectures[variable].category === 'javascript') {
+      displayLecture(element, allLectures[variable]);
     }
   }
 }

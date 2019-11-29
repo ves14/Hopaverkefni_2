@@ -1,40 +1,36 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-console */
 import { empty, displayLectures } from './helpers';
 
 const buttonBoolean = new Array(3).fill(false);
-const lecKeys = ['title', 'catagory', 'thumbnamil'];
+const keys = ['catagory', 'thumbnamil','title'];
 const DATA_URL = './lectures.json';
-let jsonData;
 const container = document.querySelector('.list');
+let jsonData;
+
 
 
 function loadLecture(e) {
-  const goal = 'lectures';
+  const string = 'lectures';
   let parent = e.target;
 
-  while (parent.className !== goal) {
+  while (parent.className !== string) {
     parent = parent.parentNode;
   }
   const currentTitle = parent.querySelector('.lectures__h2-text').textContent;
-  for (const x of jsonData.lectures) {
-    if (x.title === currentTitle) {
-      const slug = x.slug;
-      // console.log('viljum fara á ' + slug);
-      const index = jsonData.lectures.indexOf(x);
-      localStorage.setItem('slug', x.slug);
+  for (const variable of jsonData.lectures) {
+    if (variable.title === currentTitle) {
+      const slug = variable.slug;
+      console.log(slug);
+      const index = jsonData.lectures.indexOf(variable);
+      localStorage.setItem('slug', variable.slug);
       localStorage.setItem('index', index);
-      // localStorage.setItem('content', x);
-      // localStorage.setItem('category', x);
-      window.location.href = (`./fyrirlestur.html?slug=${slug}`);
+      
+     window.location.href = (`http://localhost:3000/fyrirlestur.html?slug=${slug}`);
     }
   }
 }
 
 
-function addEventHandlers() {
+function addEventListeners() {
   const lectures = document.getElementsByClassName('lectures');
   for (const lecture of lectures) {
     lecture.addEventListener('click', loadLecture);
@@ -43,62 +39,65 @@ function addEventHandlers() {
 
 
 function onClickHTML() {
-  const takki = document.querySelector('.index-buttons__html-butt');
-  takki.classList.toggle('html-active');
+  const btn = document.querySelector('.index-buttons__html-butt');
+  btn.classList.toggle('html-active');
   empty(container);
   if (buttonBoolean[0]) {
     buttonBoolean[0] = false;
   } else {
     buttonBoolean[0] = true;
   }
-  displayLectures(container, lecKeys, jsonData.lectures, buttonBoolean);
-  addEventHandlers();
+  displayLectures(container, keys, jsonData.lectures, buttonBoolean);
+  addEventListeners();
+  console.log('Hey þú ýttir á Html-takkann');
 }
 
 
 function onClickCss() {
-  const takki = document.querySelector('.index-buttons__css-butt');
-  takki.classList.toggle('css-active');
+  const btn = document.querySelector('.index-buttons__css-butt');
+  btn.classList.toggle('css-active');
   empty(container);
   if (buttonBoolean[1]) {
     buttonBoolean[1] = false;
   } else {
     buttonBoolean[1] = true;
   }
-  displayLectures(container, lecKeys, jsonData.lectures, buttonBoolean);
-  addEventHandlers();
+  displayLectures(container, keys, jsonData.lectures, buttonBoolean);
+  addEventListeners();
+  console.log('Hey þú ýttir á css-takkann');
 }
 
 
 function onClickJs() {
-  const takki = document.querySelector('.index-buttons__js-butt');
-  takki.classList.toggle('js-active');
+  const btn = document.querySelector('.index-buttons__js-butt');
+  btn.classList.toggle('js-active');
   empty(container);
-  console.log('yo html');
   if (buttonBoolean[2]) {
     buttonBoolean[2] = false;
   } else {
     buttonBoolean[2] = true;
   }
-  displayLectures(container, lecKeys, jsonData.lectures, buttonBoolean);
-  addEventHandlers();
+  displayLectures(container, keys, jsonData.lectures, buttonBoolean);
+  addEventListeners();
+  console.log('Hey þú ýttir á JavaScript-takkann');
 }
 
 
 export default class List {
   constructor() {
     this.container = document.querySelector('.list');
-    this.htmlButt = document.querySelector('.index-buttons__html-butt');
-    this.cssButt = document.querySelector('.index-buttons__css-butt');
-    this.jsButt = document.querySelector('.index-buttons__js-butt');
+    console.log(this.container);
+    this.htmlButton = document.querySelector('.index-buttons__html-butt');
+    this.cssButton = document.querySelector('.index-buttons__css-butt');
+    this.jsButton = document.querySelector('.index-buttons__js-butt');
   }
 
 
   load() {
     empty(this.container);
-    this.htmlButt.addEventListener('click', onClickHTML);
-    this.cssButt.addEventListener('click', onClickCss);
-    this.jsButt.addEventListener('click', onClickJs);
+    this.htmlButton.addEventListener('click', onClickHTML);
+    this.cssButton.addEventListener('click', onClickCss);
+    this.jsButton.addEventListener('click', onClickJs);
 
     fetch(DATA_URL)
       .then((response) => {
@@ -109,11 +108,12 @@ export default class List {
       })
       .then((data) => {
         jsonData = data;
-        displayLectures(this.container, lecKeys, data.lectures, buttonBoolean);
-        addEventHandlers();
+        displayLectures(this.container, keys, data.lectures, buttonBoolean);
+        addEventListeners();
       })
       .catch((error) => {
-      console.log(error);  //  eslint-disable-line
+      console.log(error);  
       });
+      console.log(DATA_URL);
   }
 }

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/named
 import { el } from './helpers';
 
 export function displayVideo(element, data) {
@@ -43,7 +42,7 @@ export function displayQuote(element, data, attribute) {
   element.appendChild(div);
 }
 
-export function displayImg(element, data, caption) {
+export function displayImage(element, data, caption) {
   const img = el('img');
   img.className = 'type__img';
   img.src = data;

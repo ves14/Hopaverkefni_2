@@ -1,28 +1,27 @@
 import { empty, el, getData } from './helpers';
-import {
-  displayVideo,
-  displayText,
-  displayQuote,
-  displayImg,
-  displayHeading,
-  displayList,
-  displayCode,
-} from './TypeDisplay';
-import { isStored, saveLecture, removeLecture } from './storage';
+import {displayVideo,displayText,displayQuote,displayImage,displayHeading,displayList,displayCode,
+} from './type';
 
+
+export function saveLecture(slug) {
+  localStorage.setItem(slug, 'active');
+}
+
+export function removeLecture(slug) {
+  localStorage.removeItem(slug);
+}
+
+export function isStored(slug) {
+  return localStorage.getItem(slug) === 'active';
+}
 
 export default class Lecture {
   constructor() {
     this.container = document.querySelector('.lecture');
-    this.URL = './lectures.json';
-    this.title = '';
-    this.category = '';
-    this.image = '';
-    this.thumbnail = '';
-    this.slug = '';
+    this.URL = './lectures.json'; 
   }
 
-  displayHeader() {
+  showHeader() {
     const headerCategory = el('h3', this.category);
     headerCategory.className = 'header__h3';
 
@@ -41,40 +40,41 @@ export default class Lecture {
     header.style.backgroundImage = `url(${this.image})`;
 
     this.container.appendChild(header);
+    console.log(this.container);
   }
 
-  displayContent(content) {
+  showContent(content) {
     const types = el('div');
     types.className = 'type';
 
     content.forEach((item) => {
-      const lecType = item.type;
-      const lecData = item.data;
+      const lectureType = item.type;
+      const lectureData = item.data;
       let imgCap;
       let attrib;
-      switch (lecType) {
+      switch (lectureType) {
         case 'youtube':
-          displayVideo(types, lecData);
+          displayVideo(types, lectureData);
           break;
         case 'text':
-          displayText(types, lecData);
-          break;
-        case 'quote':
-          attrib = item.attribute !== undefined ? item.attribute : '';
-          displayQuote(types, lecData, attrib);
+          displayText(types, lectureData);
           break;
         case 'image':
           imgCap = item.caption !== undefined ? item.caption : '';
-          displayImg(types, lecData, imgCap);
+          displayImage(types, lectureData, imgCap);
           break;
         case 'heading':
-          displayHeading(types, lecData);
+          displayHeading(types, lectureData);
           break;
         case 'list':
-          displayList(types, lecData);
+          displayList(types, lectureData);
           break;
         case 'code':
-          displayCode(types, lecData);
+          displayCode(types, lectureData);
+          break;
+        case 'quote':
+          attrib = item.attribute !== undefined ? item.attribute : '';
+          displayQuote(types, lectureData, attrib);
           break;
         default:
           break;
@@ -82,51 +82,52 @@ export default class Lecture {
     });
 
     this.container.append(types);
+    console.log(this.category);
   }
 
-  lecFinito() {
-    const elem = document.querySelector('.lecture__finish');
+  ifFinished() {
+    const element= document.querySelector('.lecture__finish');
     const notFinished = 'Klára fyrirlestur';
     const Finished = '✔ Kláraður fyrirlestur';
 
-    const isFinished = elem.classList.contains('lecture__finish--finished');
+    const isFinished = element.classList.contains('lecture__finish--finished');
 
     if (isFinished) {
-      elem.textContent = notFinished;
+      element.textContent = notFinished;
       removeLecture(this.slug);
     } else {
-      elem.textContent = Finished;
+      element.textContent = Finished;
       saveLecture(this.slug);
     }
 
-    elem.classList.toggle('lecture__finish--finished');
+    element.classList.toggle('lecture__finish--finished');
   }
 
-  goBack() {
-    window.location.href = 'https://notendur.hi.is/yof3/Vefforritun/Verkefni/Hopaverkefni2/';
-  }
-
-  displayFooter() {
+  showFooter() {
     const notFinished = 'Klára fyrirlestur';
     const Finished = '✔ Kláraður fyrirlestur';
 
-    const finishButton = el('button', isStored(this.slug) ? Finished : notFinished); //= el('button');
+    const finishButton = el('button', isStored(this.slug) ? Finished : notFinished); 
     finishButton.classList.add('lecture__finish');
     if (isStored(this.slug)) {
       finishButton.classList.add('lecture__finish--finished');
     }
 
-    finishButton.addEventListener('click', this.lecFinito.bind(this));
+    finishButton.addEventListener('click', this.ifFinished.bind(this));
 
     const backButton = el('a', 'Til baka');
     backButton.classList.add('lecture__back');
-    backButton.setAttribute('href', './index.html');
+    
+  
+    backButton.setAttribute('href', '/');
 
     const footer = el('footer', finishButton, backButton);
     footer.className = 'lecture__footer';
 
     this.container.appendChild(footer);
+    console.log(this.container);
   }
+  
 
   loadLectures() {
     const index = parseInt(localStorage.getItem('index'), 10);
@@ -137,17 +138,18 @@ export default class Lecture {
       this.category = data.lectures[index].category;
       this.image = data.lectures[index].image !== undefined ? data.lectures[index].image : 'none';
       this.thumbnail = data.lectures[index].thumbnail !== undefined ? data.lectures[index].thumbnail : 'none';
-      this.displayHeader();
-      this.displayContent(data.lectures[index].content);
-      this.displayFooter();
+      this.showHeader();
+      this.showContent(data.lectures[index].content);
+      this.showFooter();
     });
   }
 
   load() {
     empty(this.container);
+    console.log('Ertu að reyna að load-a')
 
-    const qs = new URLSearchParams(window.location.search);
-    this.slug = qs.get('slug');
+    const lectureURL = new URLSearchParams(window.location.search);
+    this.slug = lectureURL.get('slug');
 
     this.loadLectures();
   }
