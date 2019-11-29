@@ -1,107 +1,40 @@
 <!DOCTYPE html>
 <html lang="is">
+
 <head>
   <meta charset="utf-8">
-  <link href="https://fonts.googleapis.com/css?family=Lora|Roboto+Mono&display=swap">
-  <link rel="stylesheet" href="dist/styles.css">
-  <link rel="stylesheet" href="grid.css">
   <title>Hópverkefni 2</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto+Mono:400,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="./dist/styles.css">
 </head>
+
 <body>
-  <header class="header__forsida">
-    <div class="protection"></div>
-    <div class="header__content">
-      <h1 class="header__title">Vefforritun</h1>
-      <h2 class="header__title2">Fyrirlestrar</h2>
-  </header>
-  <main>
-    <div class="buttons">
-  <button id="html" class="buttons__button">html</button>
-  <button id="css" class="buttons__button">css</button>
-  <button id="javascript" class="buttons__button">javascript</button>
-</div>
-<section class="card-section">
-  <div class="cards">
-  
-  <div class="card">
-    <img class="card__img" src="img/thumb1.jpg" alt="">
-    <h3>HTML</h3>
-    <h4>Sagan</h4>
-    
-  </div>
-  <div class="card">
-      
-      <h3>HTML</h3>
-      <h4>Element</h4>
-      
-  </div>
-  <div class="card">
-      <img class="card__img" src="img/thumb2.jpg" alt="">
-      <h3>HTML</h3>
-      <h4>Aðgengi</h4>
-  </div>
+  <main class="main">
 
-  
-  <div class="card">
-      <img class="card__img" src="img/thumb3.jpg" alt="">
-      <h3>CSS</h3>
-      <h4>Málfræði</h4>
-  </div>
-  <div class="card">
-      <img class="card__img" src="img/thumb4.jpg" alt="">
-      <h3>CSS</h3>
-      <h4>Box model</h4>
-  </div>
-  <div class="card">
-      <img class="card__img" src="img/thumb5.jpg" alt="">
-      <h3>CSS</h3>
-      <h4>Flexbox</h4>
-  </div>
+    <header class="header index-header">
+      <div class="header__content">
+        <h3 class="header__h3 index-h3">Vefforritun</h3>
+        <h1 class="header__h1 index-h1">Fyrirlestrar</h1>
+      </div>
+    </header>
 
+    <section class="index-buttons">
+      <button class="index-buttons__html-butt">HTML</button>
+      <button class="index-buttons__css-butt">CSS</button>
+      <button class="index-buttons__js-butt">JavaScript</button>
+    </section>
 
-  <div class="card">
-      <img class="card__img" src="img/thumb6.jpg" alt="">
-      <h3>CSS</h3>
-      <h4>Skalanleg vefhönnun</h4>
-  </div>
-  <div class="card">
-      <h3>JAVASCRIPT</h3>
-      <h4>Gildi, týpur og virkjar</h4>
-  </div>
-  <div class="card">
-      <img class="card__img" src="img/thumb7.jpg" alt="">
-      <h3>JAVASCRIPT</h3>
-      <h4>Forrit</h4>
-  </div>
+    <section class="grid">
+      <div class="grid__row list">
+        <div class="grid__col">
+      </div>
+    </section>
 
-
-  <div class="card">
-      <img class="card__img" src="img/thumb8.jpg" alt="">
-      <h3>JAVASCRIPT</h3>
-      <h4>Föll</h4>
-  </div>
-  <div class="card">
-      <img class="card__img" src="img/thumb9.jpg" alt="">
-      <h3>JAVASCRIPT</h3>
-      <h4>Array & objects</h4>
-  </div>
-  <div class="card">
-      <h3>JAVASCRIPT</h3>
-      <h4>DOM & vafrinn</h4>
-  </div>
-
-
-  <div class="card">
-      <img class="card__img" src="img/thumb10.jpg" alt="">
-      <h3>JAVASCRIPT</h3>
-      <h4>Dæmi</h4>
-  </div>
-
-</div>
-
-</section>
   </main>
   <script type="module" src="dist/bundle.js">
   </script>
 </body>
+
 </html>

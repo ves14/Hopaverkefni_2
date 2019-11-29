@@ -1,56 +1,115 @@
-import { empty, displayLecture } from './helpers';
-const DATA_URL = './lectures.json';
+import { empty, displayLectures } from './helpers';
 
-function loadLecture(e){
+const buttonBoolean = new Array(3).fill(false);
+const lecKeys = ['title', 'catagory', 'thumbnamil'];
+const DATA_URL = './lectures.json';
+let jsonData;
+const container = document.querySelector('.list');
+
+
+function loadLecture(e) {
   const goal = 'lectures';
   let parent = e.target;
 
-  while(parent.className !== goal){
+  while (parent.className !== goal) {
     parent = parent.parentNode;
   }
-
   const currentTitle = parent.querySelector('.lectures__h2-text').textContent;
-  for (const x of jsonData.lectures){
-    if(x.title === currentTitle){
-      const slug =x.slug;
+  for (const x of jsonData.lectures) {
+    if (x.title === currentTitle) {
+      const slug = x.slug;
+      // console.log('viljum fara á ' + slug);
       const index = jsonData.lectures.indexOf(x);
-      localStorage.setItem('slug',x.slug);
-      localStorage.setItem('index',index);
-      window.location.href = (`./fyrirlestur.html?slug=${slug}`)
+      localStorage.setItem('slug', x.slug);
+      localStorage.setItem('index', index);
+      // localStorage.setItem('content', x);
+      // localStorage.setItem('category', x);
+      window.location.href = (`./fyrirlestur.html?slug=${slug}`);
     }
   }
 }
-function addEventListeners(){
+
+
+function addEventHandlers() {
   const lectures = document.getElementsByClassName('lectures');
-  for(const lecture of lectures){
-    console.log('Event Listener á ')
-    lecture.addEventListener('click',loadLecture);
+  for (const lecture of lectures) {
+    lecture.addEventListener('click', loadLecture);
   }
 }
+
+
+function onClickHTML() {
+  const takki = document.querySelector('.index-buttons__html-butt');
+  takki.classList.toggle('html-active');
+  empty(container);
+  if (buttonBoolean[0]) {
+    buttonBoolean[0] = false;
+  } else {
+    buttonBoolean[0] = true;
+  }
+  displayLectures(container, lecKeys, jsonData.lectures, buttonBoolean);
+  addEventHandlers();
+}
+
+
+function onClickCss() {
+  const takki = document.querySelector('.index-buttons__css-butt');
+  takki.classList.toggle('css-active');
+  empty(container);
+  if (buttonBoolean[1]) {
+    buttonBoolean[1] = false;
+  } else {
+    buttonBoolean[1] = true;
+  }
+  displayLectures(container, lecKeys, jsonData.lectures, buttonBoolean);
+  addEventHandlers();
+}
+
+
+function onClickJs() {
+  const takki = document.querySelector('.index-buttons__js-butt');
+  takki.classList.toggle('js-active');
+  empty(container);
+  console.log('yo html');
+  if (buttonBoolean[2]) {
+    buttonBoolean[2] = false;
+  } else {
+    buttonBoolean[2] = true;
+  }
+  displayLectures(container, lecKeys, jsonData.lectures, buttonBoolean);
+  addEventHandlers();
+}
+
 
 export default class List {
   constructor() {
     this.container = document.querySelector('.list');
-    this.htmlButton = document.querySelector('.index-buttons__html-button');
-
-    this.cssButton = document.querySelector('.index-buttons__css-button');
-
-    this.jsButton = document.querySelector('.index-buttons__js-button');
+    this.htmlButt = document.querySelector('.index-buttons__html-butt');
+    this.cssButt = document.querySelector('.index-buttons__css-butt');
+    this.jsButt = document.querySelector('.index-buttons__js-butt');
   }
+
 
   load() {
     empty(this.container);
-    fetch(Data_URL)
+    this.htmlButt.addEventListener('click', onClickHTML);
+    this.cssButt.addEventListener('click', onClickCss);
+    this.jsButt.addEventListener('click', onClickJs);
+
+    fetch(DATA_URL)
       .then((response) => {
         if (response.ok) {
           return response.json();
-
         }
+        throw new Error('Villa við að sækja gögn');
       })
       .then((data) => {
         jsonData = data;
-        displayLecture(this.container, lecKeys, data.lecture, buttonBoolean);
-        addEventListeners();
+        displayLectures(this.container, lecKeys, data.lectures, buttonBoolean);
+        addEventHandlers();
       })
+      .catch((error) => {
+      console.log(error);  //  eslint-disable-line
+      });
   }
 }

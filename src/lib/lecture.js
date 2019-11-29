@@ -1,5 +1,5 @@
 import { empty, el, getData } from './helpers';
-import{displayVideo,displayHeading,displayCode,displayImage,displayList,displayQuote,displayText} from './type';
+import { displayVideo, displayHeading, displayCode, displayImage, displayList, displayQuote, displayText } from './type';
 
 export default class Lecture {
     constructor() {
@@ -71,11 +71,11 @@ export default class Lecture {
         });
         this.container.append(types);
     }
-    loadLectures(){
-        const index = parseInt(localStorage.getItem('index'),10)
+    loadLectures() {
+        const index = parseInt(localStorage.getItem('index'), 10)
 
         const lectureData = getData();
-        lectureData.then((data)=> {
+        lectureData.then((data) => {
             this.title = data.lectures[index].title;
             this.category = data.lectures[index].category;
             this.image = data.lectures[index].image !== undefined ? data.lectures[index].image : 'none';
