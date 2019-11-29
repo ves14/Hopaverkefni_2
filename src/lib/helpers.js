@@ -22,7 +22,19 @@ export function el (name, ...children){
   return element;
 }
 
-function displayLecture(element, data){
+export function getData(){
+  const response = fetch(URL);
+  const json = response.then((resp)=>{
+    if(!resp.ok){
+      throw Error('Villi við að sækja upplýsingar')
+    }
+  })
+  .catch((e)=>{console.error(e);
+  throw Error('Villa við að sækja upplýsingar')});
+  return json;
+}
+
+export function displayLecture(element, data){
   /*Búa til Element fyrir myndina í headernum á fyrirlestrinum */
   let lectureHeader;
   if(data.lectureHeader == null){

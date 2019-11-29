@@ -1,17 +1,16 @@
 import List from './lib/list';
+import Lecture from './lib/lecture';
+console.log('Hellú')
 
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.querySelector('body');
   const isLecturePage = page.classList.contains('lecture-page');
 
   if (isLecturePage) {
-    const lecture = new List();
+    const lecture = new Lecture();
     lecture.load();
-
-
-
   } else {
-    const index = new List();
-    index.load();
+    const list = new List();
+    list.load();
   }
 });
