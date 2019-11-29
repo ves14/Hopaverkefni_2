@@ -120,7 +120,7 @@ export default class Lecture {
 
     const backButton = el('a', 'Til baka');
     backButton.classList.add('lecture__back');
-    backButton.setAttribute('href', 'https://notendur.hi.is/yof3/Vefforritun/Verkefni/Hopaverkefni2/');
+    backButton.setAttribute('href', './index.html');
 
     const footer = el('footer', finishButton, backButton);
     footer.className = 'lecture__footer';

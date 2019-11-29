@@ -1,3 +1,35 @@
+# Almennar upplýsingar
+
+## Keyrsla:
+Verkefnið er hýst á notendur.hi.is/...
+
+Ef að verkefnið er sótt í gegnum git er best að hala niður möppunni og opna þaðan. Eins er hægt að skoða kóðann inni á git, óþarfi er að sækja öll skjölin sérstaklega nema til þess að keyra á local svæðinu í tölvunni. 
+
+Ef þú vilt sækja verkefnið gerir þú eftirfarandi:
+    * Farðu inn á https://github.com/ves14/Hopaverkefni_2/. 
+    * Smelltu á *clone or download*, þá getur þú valið hvort þú viljir clone-a verkefnið yfir á nýtt repository eða hala niður zip skrá með verkefninu. Ef þú velur að clone-a verkefnið býrðu fyrst til nýtt repository á github og fylgir síðan leiðbeiningunum sem koma upp. Ef þú velur að hala niður zip skránni smellirðu á download zip, finnur skrána í tölvunni þinni, tvísmellir og þá afþjappast hún þar sem hún er. 
+    * Þú getur opnað skrárnar í hvaða ritli sem er, við notuðum VS Code við gerð verkefnisins en þú getur opnað það í hvaða ritli sem þér sýnist.
+    * Til að fá öll tól til að virka þarf að opna terminalinn, koma sér á réttan stað með því að nota cd <slóðin á möppuna>, skrifa npm install og síðan npm run dev. Verkefnið notar browser-sync, eslint, sass, babel og rollup. Ef þú slærð inn npm run dev fer sass, sass-watch, rollup-watch og browser-sync allt af stað en ef þú vilt keyra þau í sitthvoru lagi er það eftirfarandi:
+    * Til að keyra sass slærðu inn npm run sass í terminal.
+    * Til að keyra sass-watch slærðu inn npm run sass-watch í terminal.
+    * Til að keyra rollup-watch slærðu inn npm run rollup-watch í terminal 
+    * o.s.frv.
+    * Ef þú ferð í package.json getur þú séð hvaða skipun þú þarft að slá inn á eftir npm run til að keyra hvert og eitt tól fyrir sig og er það undir .scripts.
+
+## Uppsetning verkefnis
+Verkefninu er allt í möppunni Hopaverkefni_2 og er síðan skipt í nokkrar möppur innan þess. Í rótinni er að finna indexið, README skjal, rollup.config.js, fyrirlestur.html, lectures.json og package.json. Möppur í rótinni eru src sem skiptist í tvær möppur, í rót src möpunnar er index.js skráin og síðan eru lib, sem heldur utan um javascript skjölin, og styles, sem heldur utan um scss skjölin en þau skjöl tengjast inn í styles.scss sem heldur utan um CSS-ið. Í rót verkefnisins er einnig að finna img möppu með öllum myndum sem notaðar eru á vefnum, utlit möppu með dæmi hvernig verkefnið á að líta út, node_modules möppu og dist möppu með bundle.js og styles.css skjalinu.
+
+* Upplýsingar um hvernig keyra skuli verkefnið
+* Lýsingu á uppsetningu verkefnis, hvernig því er skipt í möppur, hvernig CSS og JavaScript er skipulagt og fleira sem á við
+* Upplýsingar um alla sem unnu verkefni
+
+
+
+
+
+
+
+
 # Hópverkefni 2
 
 Verkefnið felst í því að smíða prótótýpu af fyrirlestravef fyrir vefforritun. Gefin eru gögn sem unnin eru uppúr námsefni vetrarins.

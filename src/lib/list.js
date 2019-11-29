@@ -28,7 +28,7 @@ function loadLecture(e) {
       localStorage.setItem('index', index);
       // localStorage.setItem('content', x);
       // localStorage.setItem('category', x);
-      window.location.href = (`https://notendur.hi.is/yof3/Vefforritun/Verkefni/Hopaverkefni2/fyrirlestur.html?slug=${slug}`);
+      window.location.href = (`./fyrirlestur.html?slug=${slug}`);
     }
   }
 }
